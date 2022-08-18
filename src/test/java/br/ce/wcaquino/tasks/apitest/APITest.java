@@ -27,12 +27,12 @@ public class APITest {
 	@Test
 	public void deveAdicionarTarefaComSucesso() {
 		RestAssured.given()
-			.body("{\"task\": \"Teste via API\", \"dueDate\": \"2022-08-17\"}")
+			.body("{\"task\": \"Teste via API\", \"dueDate\": \"2022-08-18\"}")
 			.contentType(ContentType.JSON)
 		.when()
 			.post("/todo")
 		.then()
-			//.log().all()
+			.log().all()
 			.statusCode(201)
 		;
 	}
@@ -45,7 +45,7 @@ public class APITest {
 		.when()
 			.post("/todo")
 		.then()
-			//.log().all()
+			.log().all()
 			.statusCode(400)
 			.body("message", CoreMatchers.is("Due date must not be in past"))
 		;
